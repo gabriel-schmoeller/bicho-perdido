@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <logger name="org.springframework.web" level="DEBUG"/>
+
+    <appender name="MATCH-FILE" class="ch.qos.logback.core.FileAppender">
+        <file>log/match.log</file>
+        <append>false</append>
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss}] %msg %n</pattern>
+        </encoder>
+    </appender>
+    <appender name="ANALYTICS-FILE" class="ch.qos.logback.core.FileAppender">
+        <file>log/analytics.log</file>
+        <append>false</append>
+        <encoder>
+            <pattern>[%d] %msg %n</pattern>
+        </encoder>
+    </appender>
+    <appender name="NOTIFY-FILE" class="ch.qos.logback.core.FileAppender">
+        <file>log/notify.log</file>
+        <append>false</append>
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss}] %msg %n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="match" level="DEBUG" additivity="false">
+        <appender-ref ref="MATCH-FILE"/>
+    </logger>
+    <logger name="analytics" level="DEBUG" additivity="false">
+        <appender-ref ref="ANALYTICS-FILE"/>
+    </logger>
+    <logger name="notify" level="DEBUG" additivity="false">
+        <appender-ref ref="NOTIFY-FILE"/>
+    </logger>
+</configuration>
